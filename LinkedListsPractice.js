@@ -76,7 +76,7 @@ class LinkedList {
         }
         // Auto adjust for insert at first index
         if (index === 0) {
-            this.insertFirstNode(valye)
+            this.insertFirstNode(value)
             return;
         }
         let currentNode, prevNode;
