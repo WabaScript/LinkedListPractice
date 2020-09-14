@@ -69,7 +69,7 @@ class LinkedList {
     }
 
     // Insert anywhere in between 
-    inserAt(value, index) {
+    inserAtIndex(value, index) {
         // Can't insert at an index out of range
         if (index > 0 && index> this.size) {
             return;
@@ -99,6 +99,20 @@ class LinkedList {
     }
 
     // Get an index
+    getAtIndex(index) {
+        let currentNode = this.head;
+        let count = 0;
+
+        while (currentNode) {
+            if (count == index) {
+                console.log(`Value at index ${index}:`, currentNode.value);
+            }
+            count++;
+            currentNode = currentNode.next;
+        }
+        // If its empty return nothing
+        return null;
+    }
 
     // Remove at Index
 
@@ -125,8 +139,10 @@ ll.insertFirstNode(200)
 // Insert new node at end of list
 ll.insertLastNode(500)
 // Insert new node at index 1
-ll.inserAt("interruption", 1)
+ll.inserAtIndex("interruption", 1)
 // See all values in the linked list
 ll.printListValue();
+// Get value at index 2
+ll.getAtIndex(90)
 
 // console.log(ll)
