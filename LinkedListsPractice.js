@@ -29,6 +29,7 @@ class Node {
 // const node1 = new Node(100);
 // console.log(node1)
 
+// *** All methods do NOT account for garbage cleanup, removal of nodes/entire list will result in orphan data ***
 class LinkedList {
     constructor() {
         this.head = null;
@@ -114,7 +115,7 @@ class LinkedList {
         return null;
     }
 
-    // Remove at Index
+    // Remove at Index *node will become orphan as still existing in memory*
     removeAtIndex(index) {
         // Make sure index is in range
         if (index > 0 && index > this.size - 1) {
@@ -142,7 +143,11 @@ class LinkedList {
         this.size--;
     }
 
-    // Clear List
+    // Clear List, *will not clean up memory*
+    clearList() {
+        this.head = null;
+        this.size = 0;
+    }
 
     // Print list values
     printListValue() {
@@ -174,5 +179,7 @@ ll.getAtIndex(2);
 ll.removeAtIndex(1);
 // Display updated list of values
 ll.printListValue();
+// Clear entire list
+ll.clearList();
 
 // console.log(ll)
