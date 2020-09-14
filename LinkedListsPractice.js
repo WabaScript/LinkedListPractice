@@ -42,9 +42,31 @@ class LinkedList {
         // When assigning a new head, the next pointer value will actually
         // use the previous head node as its "next" reference
         // Thus everytime we insert new head nodes, old nodes are pushed down
-    }
+        // Keep track of list size
+        this.size++
+    };
 
     // Insert last node
+    insertLastNode(value) {
+        let node = new Node(value);
+        let currentNode;
+        // Edge case - if empty list, make it head
+        if (!this.head) {
+            this.head = node 
+        // Traverse through list
+        } else { 
+            // Start with first node
+            currentNode = this.head;
+            // Go through list until last node's pointer is null
+            while(currentNode.next) {
+                currentNode = currentNode.next;
+            }
+            // When you find the null pointer(end of list), assign new node to it
+            currentNode.next = node;
+        }
+        // Keep track of list size
+        this.size++
+    }
 
     // Insert anywhere in between
 
@@ -66,11 +88,15 @@ class LinkedList {
     };
 };
 
+// create a linked list
 const ll = new LinkedList();
 // Initial head
 ll.insertFirstNode(100);
 // New head node, with pointer to prev head(node)
 ll.insertFirstNode(200)
-console.log(ll)
-// 
+// Insert at end of list
+ll.insertLastNode(500)
+// See all values in the linked list
 ll.printListValue();
+
+console.log(ll)
