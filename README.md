@@ -1,4 +1,4 @@
-# LinkedListPractice
+# Linked List Practice
 Practicing with Linked Lists
  - Initialize Nodes and Linked Lists
  - Insert First(head) Node
