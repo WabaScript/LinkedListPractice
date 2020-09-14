@@ -68,7 +68,35 @@ class LinkedList {
         this.size++
     }
 
-    // Insert anywhere in between
+    // Insert anywhere in between 
+    inserAt(value, index) {
+        // Can't insert at an index out of range
+        if (index > 0 && index> this.size) {
+            return;
+        }
+        // Auto adjust for insert at first index
+        if (index === 0) {
+            this.insertFirstNode(valye)
+            return;
+        }
+        let currentNode, prevNode;
+        const node = new Node(value);
+        // Grab first node and start index
+        currentNode = this.head;
+        let count = 0;
+        // If we want to insert at index 2, then we need to grab node at 1(prev node) and change next pointer
+        while(count < index) {
+            prevNode = currentNode; // Node before desired index
+            count++; // Traverse
+            currentNode = currentNode.next; // Node after index
+        }
+        // Take our new node and set its next pointer to the node AFTER our desired index
+        node.next = currentNode;
+        // Change the node at the index that comes before our desired index to now point to new node
+        prevNode.next = node;
+         // Keep track of list size
+        this.size++;
+    }
 
     // Get an index
 
@@ -94,9 +122,11 @@ const ll = new LinkedList();
 ll.insertFirstNode(100);
 // New head node, with pointer to prev head(node)
 ll.insertFirstNode(200)
-// Insert at end of list
+// Insert new node at end of list
 ll.insertLastNode(500)
+// Insert new node at index 1
+ll.inserAt("interruption", 1)
 // See all values in the linked list
 ll.printListValue();
 
-console.log(ll)
+// console.log(ll)
