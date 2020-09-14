@@ -71,7 +71,7 @@ class LinkedList {
     // Insert anywhere in between 
     inserAtIndex(value, index) {
         // Can't insert at an index out of range
-        if (index > 0 && index> this.size) {
+        if (index > 0 && index > this.size) {
             return;
         }
         // Auto adjust for insert at first index
@@ -94,7 +94,7 @@ class LinkedList {
         node.next = currentNode;
         // Change the node at the index that comes before our desired index to now point to new node
         prevNode.next = node;
-         // Keep track of list size
+        // Keep track of list size
         this.size++;
     }
 
@@ -115,6 +115,32 @@ class LinkedList {
     }
 
     // Remove at Index
+    removeAtIndex(index) {
+        // Make sure index is in range
+        if (index > 0 && index > this.size - 1) {
+            return;
+        }
+        // Grab head node
+        let currentNode = this.head;
+        let prevNode;
+        let count = 0;
+        // Removing the head node
+        if (index === 0) {
+            // Just take first node and set it to the node after
+            this.head = currentNode.next
+            // All other indicies
+        } else {
+            while (count < index) {
+                count++;
+                prevNode = currentNode;
+                currentNode = currentNode.next;
+            }
+            // Assign previous node's next pointer to point to the node at removal's NEXT pointer
+            prevNode.next = currentNode.next;
+        }
+        // Keep track of list size
+        this.size--;
+    }
 
     // Clear List
 
@@ -135,14 +161,18 @@ const ll = new LinkedList();
 // Initial head
 ll.insertFirstNode(100);
 // New head node, with pointer to prev head(node)
-ll.insertFirstNode(200)
+ll.insertFirstNode(200);
 // Insert new node at end of list
-ll.insertLastNode(500)
+ll.insertLastNode(500);
 // Insert new node at index 1
-ll.inserAtIndex("interruption", 1)
+ll.inserAtIndex("interruption", 1);
 // See all values in the linked list
 ll.printListValue();
 // Get value at index 2
-ll.getAtIndex(90)
+ll.getAtIndex(2);
+// Remove node at index 1
+ll.removeAtIndex(1);
+// Display updated list of values
+ll.printListValue();
 
 // console.log(ll)
