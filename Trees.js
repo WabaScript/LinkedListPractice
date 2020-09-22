@@ -7,7 +7,7 @@ class Tree {
     constructor() {
         this.root = null;
     }
-
+    // find where to add node
     add(data, toNodeData){
         const node = new Node(data);
 
