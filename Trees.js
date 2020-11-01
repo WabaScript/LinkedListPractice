@@ -23,6 +23,7 @@ class Tree {
         }
     }
 
+    // Breadth First Search
     findBFS(data) {
         const queue = [this.root];
         let node = null;
